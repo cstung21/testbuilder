@@ -23,7 +23,12 @@ var detectNetwork = function(cardNumber) {
   	network = 'Visa';
   } else if ((cardNumber.slice(0,2) === '51' || cardNumber.slice(0,2) === '52' || cardNumber.slice(0,2) === '53' || cardNumber.slice(0,2) === '54' || cardNumber.slice(0,2) === '55') && cardNumber.length === 16) {
   	network = 'MasterCard';
+  } else if ((cardNumber.slice(0,4) === '6011' || cardNumber.slice(0,7) === '644-649' || cardNumber.slice(0,2) === '65') && (cardNumber.length === 16 || cardNumber.length === 19)) {
+  	network = 'Discover';
+  } else if ((cardNumber.slice(0,4) === '5018' || cardNumber.slice(0,4) === '5020' || cardNumber.slice(0,4) === '5038' || cardNumber.slice(0,4) === '6304') && (cardNumber.length >= 12 && cardNumber.length <= 19)) {
+  	network = 'Maestro';
   }
+
   return network;
 };
 
